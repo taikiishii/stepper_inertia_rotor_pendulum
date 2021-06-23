@@ -19,7 +19,6 @@ volatile int16_t rawGyroY;
 volatile float caribGyroY;
 volatile float gyroY, degY = 0, dpsY = 0, rotY = 0;
 volatile bool out = false;
-volatile int16_t cmd;
 volatile int16_t pulseSpeed = 0, count = 0;
 volatile float lpfY, lpfA = 0.999;
 
@@ -185,7 +184,6 @@ void controlloop () {
   if (20 < abs(degY - lpfY)) {
     pulseSpeed = 0;
     digitalWrite(EN, HIGH);
-    Serial.println("*******************RESTARTED********************");
     Serial.println("*********************STOP***********************");
 
     while (1) {
